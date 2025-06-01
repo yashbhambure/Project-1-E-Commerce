@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVault - Premium Gaming Store</title>
+    <meta name="description" content="Discover the latest games at GameVault. Shop premium PC, console, and indie games with instant digital delivery. Gaming gear and accessories available.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="GameVault - Premium Gaming Store">
+    <meta property="og:description" content="Discover the latest games at GameVault. Shop premium PC, console, and indie games with instant digital delivery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #0a0a0f;
+            --secondary-bg: #151520;
+            --card-bg: #1a1a2e;
+            --accent-blue: #00d4ff;
+            --accent-purple: #9d4edd;
+            --accent-green: #39ff14;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --text-muted: #6c757d;
+            --border-color: #2a2a3e;
+            --hover-glow: rgba(0, 212, 255, 0.3);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .gaming-text {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: rgba(21, 21, 32, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue) !important;
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .cart-btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border: none;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-green);
+            color: black;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+        }
+
+        /* Search and Filter Section */
+        .search-section {
+            background: var(--card-bg);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-input {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 0.2rem rgba(0, 212, 255, 0.25);
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .filter-btn {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .view-toggle {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 10px;
+            padding: 0.5rem;
+            margin: 0 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-toggle.active {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        /* Game Cards */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 3rem 0;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover .game-image {
+            transform: scale(1.05);
+        }
+
+        .game-info {
+            padding: 1.5rem;
+        }
+
+        .game-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .game-genre {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .game-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .game-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(45deg, var(--accent-green), #2dd653);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            color: black;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
+        }
+
+        /* List View Styles */
+        .game-card.list-view {
+            display: flex;
+            flex-direction: row;
+            max-height: 200px;
+        }
+
+        .game-card.list-view .game-image {
+            width: 300px;
+            height: 100%;
+        }
+
+        .game-card.list-view .game-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Shopping Cart Modal */
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            border-bottom: 2px solid var(--border-color);
+            background: var(--secondary-bg);
+        }
+
+        .modal-title {
+            color: var(--text-primary);
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .cart-item {
+            background: var(--secondary-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: var(--accent-blue);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .cart-total {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--accent-green);
+            margin-top: 1rem;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            border: none;
+            border-radius: 25px;
+            padding: 1rem 2rem;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Game Detail Modal */
+        .game-detail-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-detail-genre {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-bg);
+            padding: 3rem 0 1rem;
+            border-top: 2px solid var(--border-color);
+            margin-top: 5rem;
+        }
+
+        .footer h5 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .game-card.list-view {
+                flex-direction: column;
+                max-height: none;
+            }
+
+            .game-card.list-view .game-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .search-section .row > div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            70% { transform: scale(0.9); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand gaming-text" href="#home">
+                <i class="fas fa-gamepad me-2"></i>GameVault
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <button class="cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fas fa-shopping-cart me-2"></i>Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="hero-title gaming-text">GameVault</h1>
+            <p class="hero-subtitle">Your Ultimate Gaming Destination</p>
+            <p class="lead mb-4">Discover the latest games, from blockbuster titles to indie gems. Premium gaming experiences delivered instantly.</p>
+            <button class="cta-btn bounce-in" onclick="scrollToGames()">
+                <i class="fas fa-rocket me-2"></i>Explore Games
+            </button>
+        </div>
+    </section>
+
+    <!-- Most Played Games Section -->
+    <section class="py-5" style="background: var(--card-bg); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="gaming-text" style="color: var(--accent-blue); font-size: 2.5rem; margin-bottom: 1rem;">
+                    <i class="fas fa-fire me-3"></i>Most Played Games
+                </h2>
+                <p style="color: var(--text-secondary); font-size: 1.2rem;">Experience the games that millions are playing right now</p>
+            </div>
+            
+            <div class="row" id="mostPlayedGames">
+                <!-- Most played games will be populated by JavaScript -->
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" style="background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue)); color: white; padding: 0.75rem 2rem; border-radius: 25px; border: none; font-weight: 600;" onclick="document.getElementById('games').scrollIntoView();">
+                    <i class="fas fa-gamepad me-2"></i>View All Games
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section id="games" class="search-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-input" id="searchInput" placeholder="Search games...">
+                        <button class="btn btn-outline-light" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="action">Action</button>
+                        <button class="filter-btn" data-category="rpg">RPG</button>
+                        <button class="filter-btn" data-category="strategy">Strategy</button>
+                        <button class="filter-btn" data-category="indie">Indie</button>
+                        <button class="filter-btn" data-category="sports">Sports</button>
+                    </div>
+                </div>
+                <div class="col-md-2 text-end">
+                    <div class="view-controls">
+                        <button class="view-toggle active" id="gridView" title="Grid View">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-toggle" id="listView" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Catalog -->
+    <section class="py-5">
+        <div class="container">
+            <div id="gamesContainer" class="games-grid">
+                <!-- Games will be populated by JavaScript -->
+            </div>
+            
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No games found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title gaming-text">
+                        <i class="fas fa-shopping-cart me-2"></i>Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Empty Cart State -->
+                    <div id="emptyCart" class="text-center py-5">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--text-muted); mb-3"></i>
+                        <h4 class="text-secondary">Your cart is empty</h4>
+                        <p class="text-muted">Add some games to get started!</p>
+                    </div>
+                    
+                    <!-- Cart Total -->
+                    <div id="cartTotal" class="cart-total" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="text-light">Total:</h4>
+                            <h3 class="text-success" id="totalAmount">₹0</h3>
+                        </div>
+                        <button class="checkout-btn" onclick="checkout()">
+                            <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Detail Modal -->
+    <div class="modal fade" id="gameDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameDetailTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="gameDetailBody">
+                    <!-- Game details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="gaming-text">GameVault</h5>
+                    <p class="text-secondary">Your ultimate destination for premium gaming experiences. Instant digital delivery, competitive prices, and exceptional customer service.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#games" class="footer-link">Games</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Action</a></li>
+                        <li><a href="#" class="footer-link">RPG</a></li>
+                        <li><a href="#" class="footer-link">Strategy</a></li>
+                        <li><a href="#" class="footer-link">Indie</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Downloads</a></li>
+                        <li><a href="#" class="footer-link">Refunds</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">EULA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: var(--border-color); margin: 2rem 0;">
+            <div class="text-center">
+                <p class="text-muted">&copy; 2024 GameVault. All rights reserved. Game content and materials are copyrights of their respective publishers and companies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Game data with most played games section and corrected authentic images
+        const gamesData = [
+            // Most Played Games
+            {
+                id: 1,
+                title: "Red Dead Redemption 2",
+                genre: "action",
+                price: 4999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+                description: "An epic tale of life in America's unforgiving heartland. The game's vast and atmospheric world provides the foundation for a brand new online multiplayer experience.",
+                mostPlayed: true
+            },
+            {
+                id: 2,
+                title: "Grand Theft Auto V",
+                genre: "action",
+                price: 2999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+                description: "Los Santos is a city of bright lights, long nights and dirty money. Follow three unique criminals plotting their own chances of survival and success.",
+                mostPlayed: true
+            },
+            {
+                id: 3,
+                title: "Resident Evil Village: Gold Edition Bundle",
+                genre: "horror",
+                price: 4799,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg",
+                description: "Face terrifying new threats in a village haunted by dark secrets and monstrous creatures.",
+                mostPlayed: true   
+            },
+            {
+                id: 4,
+                title: "Cyberpunk 2077",
+                genre: "action",
+                price: 3999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+                description: "An open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification.",
+                mostPlayed: true
+            },
+            // RPG Games
+            {
+                id: 5,
+                title: "The Witcher 3: Wild Hunt",
+                genre: "rpg",
+                price: 2499,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
+                description: "A story-driven open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences."
+            },
+            {
+                id: 6,
+                title: "Baldur's Gate 3",
+                genre: "rpg",
+                price: 4299,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+                description: "Gather your party and return to the Forgotten Realms in a tale of fellowship and betrayal, sacrifice and survival."
+            },
+            {
+                id: 7,
+                title: "Elden Ring",
+                genre: "rpg",
+                price: 4599,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+                description: "Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between."
+            },
+            {
+                id: 8,
+                title: "Disco Elysium",
+                genre: "rpg",
+                price: 2199,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/632470/header.jpg",
+                description: "A groundbreaking role playing game with unprecedented freedom of choice. Be a hero or an absolute disaster of a human being."
+            },
+            {
+                id: 9,
+                title: "Divinity: Original Sin 2",
+                genre: "rpg",
+                price: 2799,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/435150/header.jpg",
+                description: "The critically acclaimed RPG that raised the bar for the entire genre. Create your character and cooperate with friends."
+            },
+            {
+                id: 10,
+                title: "Persona 5 Royal",
+                genre: "rpg",
+                price: 3199,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1687950/header.jpg",
+                description: "Prepare for an all-new RPG experience in Persona 5 Royal based in the universe of the award-winning series."
+            },
+            // Action Games
+            {
+                id: 11,
+                title: "Assassin's Creed Valhalla",
+                genre: "action",
+                price: 3799,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg",
+                description: "Become Eivor, a legendary Viking raider on a quest for glory. Explore England's Dark Ages as you raid your enemies."
+            },
+            {
+                id: 12,
+                title: "God of War",
+                genre: "action",
+                price: 3999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
+                description: "Living as a man outside the shadow of the gods, Kratos must adapt to unfamiliar lands and unexpected allies."
+            },
+            {
+                id: 13,
+                title: "Doom Eternal",
+                genre: "action",
+                price: 2799,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg",
+                description: "Hell's armies have invaded Earth. Become the Slayer in an epic single-player campaign to conquer demons across dimensions."
+            },
+            {
+                id: 14,
+                title: "Spider-Man Remastered",
+                genre: "action",
+                price: 3499,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg",
+                description: "Be Greater. When a new villain threatens New York City, Peter Parker must rise up as Spider-Man."
+            },
+            {
+                id: 15,
+                title: "Sekiro: Shadows Die Twice",
+                genre: "action",
+                price: 3899,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/814380/header.jpg",
+                description: "Carve your own clever path to vengeance in this action-adventure tale with RPG elements."
+            },
+            {
+                id: 16,
+                title: "Devil May Cry 5",
+                genre: "action",
+                price: 2199,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/601150/header.jpg",
+                description: "The ultimate Devil Hunter is back in style. Nero, Dante, and V return in the most high octane action experience."
+            },
+            // Strategy Games
+            {
+                id: 17,
+                title: "Civilization VI",
+                genre: "strategy",
+                price: 3499,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/289070/header.jpg",
+                description: "Build and expand your empire in this turn-based strategy game where you compete against history's greatest leaders."
+            },
+            {
+                id: 18,
+                title: "Total War: Warhammer III",
+                genre: "strategy",
+                price: 4299,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1142710/header.jpg",
+                description: "The cataclysmic conclusion to the Total War: Warhammer trilogy. Rally your forces and step into the Realm of Chaos."
+            },
+            {
+                id: 19,
+                title: "Age of Empires IV",
+                genre: "strategy",
+                price: 3799,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1466860/header.jpg",
+                description: "One of the most beloved real-time strategy games returns to glory with Age of Empires IV."
+            },
+            {
+                id: 20,
+                title: "XCOM 2",
+                genre: "strategy",
+                price: 2299,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/268500/header.jpg",
+                description: "Earth has changed and is now under alien rule. Facing impossible odds you must rebuild XCOM."
+            },
+            {
+                "id": 109,
+                "title": "The Last of Us Part I",
+                "genre": "action",
+                "price": 2999,
+                "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg",
+                "description": "Experience the remastered journey of Joel and Ellie in this critically acclaimed story-driven action-adventure survival game."
+            },
+            {
+                id: 22,
+                title: "Crusader Kings III",
+                genre: "strategy",
+                price: 3299,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1158310/header.jpg",
+                description: "Shape and rule your realm in this medieval grand strategy game where every character has a story."
+            },
+            // Indie Games
+            {
+                id: 23,
+                title: "Hades",
+                genre: "indie",
+                price: 1899,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1145360/header.jpg",
+                description: "A rogue-like dungeon crawler where you defy the god of the dead as you hack and slash your way out of the Underworld."
+            },
+            {
+                id: 24,
+                title: "Among Us",
+                genre: "indie",
+                price: 399,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/945360/header.jpg",
+                description: "Play with 4-15 players online or via local WiFi as you attempt to prep your spaceship for departure."
+            },
+            {
+                id: 25,
+                title: "Hollow Knight",
+                genre: "indie",
+                price: 1299,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg",
+                description: "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom."
+            },
+            {
+                id: 26,
+                title: "Celeste",
+                genre: "indie",
+                price: 1699,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/504230/header.jpg",
+                description: "Help Madeline survive her inner demons on her journey to the top of Celeste Mountain."
+            },
+            {
+                id: 27,
+                title: "Dead Cells",
+                genre: "indie",
+                price: 1999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/588650/header.jpg",
+                description: "A rogue-lite, metroidvania inspired action-platformer. You'll explore a sprawling, ever-changing castle."
+            },
+            {
+                id: 28,
+                title: "Stardew Valley",
+                genre: "indie",
+                price: 1199,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
+                description: "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools."
+            },
+            {
+                id: 29,
+                title: "Cuphead",
+                genre: "indie",
+                price: 1599,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/268910/header.jpg",
+                description: "A classic run and gun action game heavily focused on boss battles inspired by 1930s cartoons."
+            },
+            {
+                id: 30,
+                title: "Ori and the Will of the Wisps",
+                genre: "indie",
+                price: 2299,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1057090/header.jpg",
+                description: "Embark on an all-new adventure in a vast world filled with new friends and foes."
+            },
+            // Additional Popular Games
+            {
+                id: 31,
+                title: "Call of Duty: Black Ops VI",
+                genre: "action",
+                price: 4999,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1938090/header.jpg",
+                description: "Experience the ultimate online playground with classic multiplayer or squad-up and play cooperatively."
+            },
+            {
+                id: 32,
+                title: "FIFA 24",
+                genre: "sports",
+                price: 4299,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/2195250/header.jpg",
+                description: "Feel closer to The Game in EA SPORTS FC 24, with over 19,000 fully licensed players."
+            },
+            {
+                id: 33,
+                title: "Stray",
+                genre: "adventure",
+                price: 1999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg",
+                description: "Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten cybercity."
+            },
+            {
+                id: 34,
+                title: "Horizon Zero Dawn",
+                genre: "rpg",
+                price: 2999,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1151640/header.jpg",
+                description: "Experience Aloy's legendary quest to unravel the mysteries of a world ruled by machines.",
+                mostPlayed: true
+            },
+            {
+                id: 35,
+                title: "Resident Evil Village: Standard Edition",
+                genre: "horror",
+                price: 2499,
+                image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg",
+                description: "Face terrifying new threats in a village haunted by dark secrets and monstrous creatures.",
+                mostPlayed: true            },
+            {
+                id: 36,
+                title: "Apex Legends",
+                genre: "action",
+                price: 0,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg",
+                description: "Conquer with character in Apex Legends, a free-to-play Battle Royale shooter."
+            },
+            {
+                id: 37,
+                title: "Counter-Strike 2",
+                genre: "action",
+                price: 0,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg",
+                description: "For over two decades, Counter-Strike has offered an elite competitive experience."
+            },
+            {
+                id: 38,
+                title: "Rocket League",
+                genre: "sports",
+                price: 0,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/252950/header.jpg",
+                description: "A futuristic Sports-Action game, Rocket League equips players with booster-rigged vehicles."
+            },
+            {
+                id: 39,
+                title: "League of Legends",
+                genre: "strategy",
+                price: 0,
+                image: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+                description: "Join over 180 million registered players in the award-winning free-to-play MOBA."
+            },
+            {
+                id: 40,
+                title: "Dota 2",
+                genre: "strategy",
+                price: 0,
+                image: "https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg",
+                description: "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes."
+            }
+        ];
+
+        // Shopping cart state
+        let cart = JSON.parse(localStorage.getItem('gameCart')) || [];
+        let currentView = 'grid';
+        let currentFilter = 'all';
+        let filteredGames = [...gamesData];
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartDisplay();
+            renderMostPlayedGames();
+            renderGames();
+            setupEventListeners();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredGames = gamesData.filter(game => 
+                    game.title.toLowerCase().includes(searchTerm) || 
+                    game.description.toLowerCase().includes(searchTerm)
+                );
+                if (currentFilter !== 'all') {
+                    filteredGames = filteredGames.filter(game => game.genre === currentFilter);
+                }
+                renderGames();
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentFilter = this.dataset.category;
+                    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                    
+                    if (currentFilter === 'all') {
+                        filteredGames = gamesData;
+                    } else {
+                        filteredGames = gamesData.filter(game => game.genre === currentFilter);
+                    }
+                    
+                    if (searchTerm) {
+                        filteredGames = filteredGames.filter(game => 
+                            game.title.toLowerCase().includes(searchTerm) || 
+                            game.description.toLowerCase().includes(searchTerm)
+                        );
+                    }
+                    
+                    renderGames();
+                });
+            });
+
+            // View toggle buttons
+            document.getElementById('gridView').addEventListener('click', function() {
+                if (currentView !== 'grid') {
+                    currentView = 'grid';
+                    updateViewButtons();
+                    renderGames();
+                }
+            });
+
+            document.getElementById('listView').addEventListener('click', function() {
+                if (currentView !== 'list') {
+                    currentView = 'list';
+                    updateViewButtons();
+                    renderGames();
+                }
+            });
+        }
+
+        // Update view toggle buttons
+        function updateViewButtons() {
+            document.querySelectorAll('.view-toggle').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(currentView + 'View').classList.add('active');
+        }
+
+        // Render most played games section
+        function renderMostPlayedGames() {
+            const mostPlayedContainer = document.getElementById('mostPlayedGames');
+            const mostPlayedGames = gamesData.filter(game => game.mostPlayed);
+            
+            mostPlayedContainer.innerHTML = mostPlayedGames.map(game => `
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="game-card" style="height: 100%; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: var(--accent-green); color: black; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem; font-weight: bold; z-index: 2;">
+                            <i class="fas fa-fire me-1"></i>TRENDING
+                        </div>
+                        <img src="${game.image}" alt="${game.title}" class="game-image" 
+                             onclick="showGameDetail(${game.id})" style="cursor: pointer;">
+                        <div class="game-info">
+                            <div class="game-genre">${game.genre.toUpperCase()}</div>
+                            <h4 class="game-title" style="font-size: 1.2rem;">${game.title}</h4>
+                            <div class="game-price" style="font-size: 1.3rem;">${game.price === 0 ? 'FREE' : '₹' + game.price.toLocaleString('en-IN')}</div>
+                            <p class="game-description" style="font-size: 0.9rem; margin-bottom: 1rem;">${game.description.substring(0, 100)}...</p>
+                            <button class="add-to-cart-btn" onclick="addToCart(${game.id})" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">
+                                <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render games based on current view and filters
+        function renderGames() {
+            const container = document.getElementById('gamesContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            // Update container class based on view
+            container.className = currentView === 'grid' ? 'games-grid' : 'games-list';
+            
+            if (filteredGames.length === 0) {
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            container.innerHTML = filteredGames.map(game => `
+                <div class="game-card ${currentView === 'list' ? 'list-view' : ''} fade-in" data-game-id="${game.id}">
+                    <img src="${game.image}" alt="${game.title}" class="game-image" 
+                         onclick="showGameDetail(${game.id})" style="cursor: pointer;">
+                    <div class="game-info">
+                        <div class="game-genre">${game.genre.toUpperCase()}</div>
+                        <h3 class="game-title">${game.title}</h3>
+                        <div class="game-price">${game.price === 0 ? 'FREE' : '₹' + game.price.toLocaleString('en-IN')}</div>
+                        <p class="game-description">${game.description}</p>
+                        <div class="d-grid gap-2">
+                            <button class="add-to-cart-btn" onclick="addToCart(${game.id})">
+                                <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                            </button>
+                            <button class="btn" style="background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue)); border: none; border-radius: 25px; padding: 0.75rem 2rem; color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" onclick="buyNow(${game.id})">
+                                <i class="fas fa-download me-2"></i>${game.price === 0 ? 'Download' : 'Buy Now'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show game detail modal
+        function showGameDetail(gameId) {
+            const game = gamesData.find(g => g.id === gameId);
+            if (!game) return;
+
+            document.getElementById('gameDetailTitle').textContent = game.title;
+            document.getElementById('gameDetailBody').innerHTML = `
+                <img src="${game.image}" alt="${game.title}" class="game-detail-image">
+                <span class="game-detail-genre">${game.genre.toUpperCase()}</span>
+                <h4 class="text-success mb-3">${game.price === 0 ? 'FREE' : '₹' + game.price.toLocaleString('en-IN')}</h4>
+                <p class="text-light mb-4">${game.description}</p>
+                <div class="d-grid gap-2">
+                    <button class="add-to-cart-btn" onclick="addToCart(${game.id}); bootstrap.Modal.getInstance(document.getElementById('gameDetailModal')).hide();">
+                        <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                    </button>
+                    <button class="btn" style="background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue)); border: none; border-radius: 25px; padding: 0.75rem 2rem; color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" onclick="buyNow(${game.id}); bootstrap.Modal.getInstance(document.getElementById('gameDetailModal')).hide();">
+                        <i class="fas fa-download me-2"></i>${game.price === 0 ? 'Download' : 'Buy Now'}
+                    </button>
+                </div>
+            `;
+
+            new bootstrap.Modal(document.getElementById('gameDetailModal')).show();
+        }
+
+        // Add game to cart
+        function addToCart(gameId) {
+            const game = gamesData.find(g => g.id === gameId);
+            if (!game) return;
+
+            const existingItem = cart.find(item => item.id === gameId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...game, quantity: 1 });
+            }
+
+            updateCartDisplay();
+            saveCart();
+            
+            // Show success feedback
+            showToast(`${game.title} added to cart!`, 'success');
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartTotal = document.getElementById('cartTotal');
+            const totalAmount = document.getElementById('totalAmount');
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartTotal.style.display = 'none';
+                cartItems.innerHTML = '';
+                return;
+            }
+
+            emptyCart.style.display = 'none';
+            cartTotal.style.display = 'block';
+
+            // Calculate total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            totalAmount.textContent = `₹${total.toLocaleString('en-IN')}`;
+
+            // Render cart items
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="row align-items-center">
+                        <div class="col-3">
+                            <img src="${item.image}" alt="${item.title}" class="cart-item-image">
+                        </div>
+                        <div class="col-6">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">${item.price === 0 ? 'FREE' : '₹' + item.price.toLocaleString('en-IN')}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="text-white mx-2">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger mt-2" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update quantity
+        function updateQuantity(gameId, change) {
+            const item = cart.find(item => item.id === gameId);
+            if (!item) return;
+
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(gameId);
+            } else {
+                updateCartDisplay();
+                saveCart();
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(gameId) {
+            cart = cart.filter(item => item.id !== gameId);
+            updateCartDisplay();
+            saveCart();
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('gameCart', JSON.stringify(cart));
+        }
+
+        // Checkout process
+        function checkout() {
+            if (cart.length === 0) return;
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Create order summary
+            const orderSummary = cart.map(item => 
+                `${item.title} x${item.quantity} - ${item.price === 0 ? 'FREE' : '₹' + (item.price * item.quantity).toLocaleString('en-IN')}`
+            ).join('\n');
+
+            const confirmed = confirm(`Order Summary:\n\n${orderSummary}\n\nTotal: ₹${total.toLocaleString('en-IN')}\n\nProceed with checkout?`);
+            
+            if (confirmed) {
+                // Simulate order processing
+                const orderId = 'GV' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                
+                alert(`Order Confirmed!\n\nOrder ID: ${orderId}\nTotal: ₹${total.toLocaleString('en-IN')}\n\nThank you for shopping with GameVault!\nYour games will be available for download shortly.`);
+                
+                // Clear cart
+                cart = [];
+                updateCartDisplay();
+                saveCart();
+                
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+            }
+        }
+
+        // Buy now function for instant purchase
+        function buyNow(gameId) {
+            const game = gamesData.find(g => g.id === gameId);
+            if (!game) return;
+
+            if (game.price === 0) {
+                // Handle free games
+                const confirmed = confirm(`Download ${game.title}?\n\nThis is a free game. It will be added to your library immediately.`);
+                
+                if (confirmed) {
+                    const orderId = 'GV' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                    alert(`Download Started!\n\nOrder ID: ${orderId}\nGame: ${game.title}\nPrice: FREE\n\n${game.title} has been added to your library!\nYou can now download and play the game.`);
+                }
+            } else {
+                // Handle paid games
+                const confirmed = confirm(`Purchase ${game.title}?\n\nPrice: ₹${game.price.toLocaleString('en-IN')}\n\nThis will process the payment immediately and add the game to your library.`);
+                
+                if (confirmed) {
+                    // Simulate payment processing
+                    const orderId = 'GV' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                    
+                    alert(`Payment Successful!\n\nOrder ID: ${orderId}\nGame: ${game.title}\nAmount Paid: ₹${game.price.toLocaleString('en-IN')}\n\n${game.title} has been added to your library!\nYou can now download and play the game.`);
+                }
+            }
+        }
+
+        // Smooth scrolling to games section
+        function scrollToGames() {
+            document.getElementById('games').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-white bg-${type === 'success' ? 'success' : 'primary'} border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${message}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            // Create toast container if it doesn't exist
+            let toastContainer = document.getElementById('toastContainer');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.id = 'toastContainer';
+                toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
+                toastContainer.style.zIndex = '9999';
+                document.body.appendChild(toastContainer);
+            }
+            
+            toastContainer.appendChild(toast);
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            // Remove toast element after it's hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+        }
+
+        // Add some interactive animations
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.classList.contains('game-card')) {
+                e.target.style.transform = 'translateY(-5px) scale(1.02)';
+            }
+        });
+
+        document.addEventListener('mouseout', function(e) {
+            if (e.target.classList.contains('game-card')) {
+                e.target.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+
+        // Add keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any open modals
+                document.querySelectorAll('.modal.show').forEach(modal => {
+                    bootstrap.Modal.getInstance(modal)?.hide();
+                });
+            }
+        });
+
+        // Performance optimization: Lazy loading for images
+        function setupLazyLoading() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // Initialize lazy loading when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupLazyLoading);
+        } else {
+            setupLazyLoading();
+        }
+    </script>
+</body>
+</html>
